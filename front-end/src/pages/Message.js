@@ -24,7 +24,7 @@ class Message extends React.Component {
         fetch(monAPI)
             .then(response => response.json())
             .then(response => response.map(function (value, index) {
-                return results.push([value['userId'], value['userLastName'] + ' ' + value['userFirstName']])
+                return results.push([value.userId, value.userLastName + ' ' + value.userFirstName])
             }))
             .catch(err => console.error(err))
 

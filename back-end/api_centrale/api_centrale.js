@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 /*		TEMPORAIRES		*/
-let currentUserId = "1";
+let currentUserId = "2";
 /*		FIN TEMPORAIRES		*/
 
 /*		TEST		*/

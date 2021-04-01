@@ -17,7 +17,7 @@ class MessageList extends React.Component {
     }
 
     fetchGetMessages() {
-        let monAPI = "http://localhost:7029/get" + this.props.type + "Messages/1";
+        let monAPI = "http://localhost:7029/get" + this.props.type + "Messages/2";
 
         fetch(monAPI)
             .then(response => response.json())
@@ -81,7 +81,7 @@ class MessageList extends React.Component {
                             <tbody>
                                 {this.state.messages.map((m, midx) => {
                                     return (<tr key={midx}>
-                                        <td>{m.receveirsId.map((r, ridx) => { return (ridx ? ", " : "") + this.state.users[r][1] })}</td>
+                                        <td>{m.receveirsId.map((r, ridx) => {if (this.state.users[r] !== undefined)  return (ridx ? ", " : "") + this.state.users[r][1] })}</td>
                                         <td>{m.messageObject}</td>
                                         <td>{m.sendingDate}</td>
                                         <td><button onClick={() => { if (window.confirm('Etes-vous sûr de vouloir supprimer le message ?')) this.fetchDeleteMessage(m._id) }} className="btn btn-secondary btn-sm"><i className="fas fa-trash-alt"></i></button></td>
