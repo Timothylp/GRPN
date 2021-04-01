@@ -17,7 +17,7 @@ class MessageList extends React.Component {
     }
 
     fetchGetMessages() {
-        let monAPI = "http://localhost:7029/get" + this.props.type + "Messages";
+        let monAPI = "http://localhost:7029/get" + this.props.type + "Messages/1";
 
         fetch(monAPI)
             .then(response => response.json())

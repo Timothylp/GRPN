@@ -27,8 +27,12 @@ require('./routes/message_routes.js')(app,fetch,currentUserId);
 /*		FIN MESSAGE		*/
 
 /*		USER		*/
-require('./routes/user_routes.js')(app);
+require('./routes/user_routes.js')(app, fetch);
 /*		FIN USER		*/
+
+/*		UP		*/
+require('./routes/up_routes.js')(app,fetch);
+/*		FIN UP		*/
 
 app.listen(port, () => {
 	console.log('le serveur minimaliste fonctionne sur le port : ' + port)

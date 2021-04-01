@@ -1,6 +1,6 @@
 module.exports = function(app,fetch,currentUserId) {
-    app.get('/getSentMessages', (req, res) => {
-        fetch('http://localhost:7002/getMessagesBySender/' + currentUserId)
+    app.get('/getSentMessages/:id', (req, res) => {
+        fetch('http://localhost:7002/getMessagesBySender/' + req.params.id)
             .then(res => res.json())
             .then(response => {
                 return res.send(response);
@@ -8,8 +8,8 @@ module.exports = function(app,fetch,currentUserId) {
             .catch(err => console.error(err))
     })
     
-    app.get('/getReceivedMessages', (req, res) => {
-        fetch('http://localhost:7002/getMessagesByReceiver/' + currentUserId)
+    app.get('/getReceivedMessages/:id', (req, res) => {
+        fetch('http://localhost:7002/getMessagesByReceiver/' + req.params.id)
             .then(res => res.json())
             .then(response => {
                 return res.send(response);

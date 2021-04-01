@@ -1,13 +1,13 @@
-module.exports = function (app) {
+module.exports = function (app, fetch) {
     app.get('/getUsers', (req, res) => {
-        /*fetch('http://obiwan2.univ-brest.fr:7001/getUsers/')
+        fetch('http://localhost:7001/getUsers/')
             .then(res => res.json())
             .then(response => {
                 return res.send(response);
             })
-            .catch(err => console.error(err))*/
+            .catch(err => console.error(err))
 
-        var data = JSON.stringify(
+        /*var data = JSON.stringify(
             [
                 {
                     "userId": 0,
@@ -32,7 +32,40 @@ module.exports = function (app) {
             ]
         )
 
-        return res.send(data)
+        return res.send(data)*/
+    })
+
+    app.post('/createUser', (req, res) => {
+
+        var requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(req.body),
+            redirect: 'follow'
+        };
+
+        fetch("http://localhost:7001/createUser", requestOptions)
+            .then(res => res.json())
+            .then(response => {
+                return res.send(response);
+            })
+            .catch(error => console.log('error', error));
+    })
+
+    app.delete('/deleteUser', (req, res) => {
+        var requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(req.body),
+            redirect: 'follow'
+        };
+
+        fetch("http://localhost:7001/deleteUser", requestOptions)
+            .then(res => res.json())
+            .then(response => {
+                return res.send(response);
+            })
+            .catch(error => console.log('error', error));
     })
 
     app.post('/login', (req, res) => {

@@ -1,18 +1,17 @@
-import React from "react";
-import './App.css';
+import React from "react"
+import './App.css'
 import {
   BrowserRouter,
   Link,
   Route,
-} from "react-router-dom";
-
-import PrivateRoute from './components/PrivateRoute';
+} from "react-router-dom"
 
 import Header from './sections/Header'
-import Footer from "./sections/Footer";
+import Footer from "./sections/Footer"
 
-import Login from './pages/Login';
-import Message from './pages/Message';
+import Login from './pages/Login'
+import Message from './pages/Message'
+import User from './pages/User'
 
 class App extends React.Component {
 
@@ -70,13 +69,17 @@ class App extends React.Component {
                         <Link className="nav-link text-dark font-italic" to="/messages"><i className="fas fa-envelope"></i> Messages</Link>
                       </li>
                       <li className="nav-item">
-                        <a href="" onClick={() => { if (window.confirm('Etes-vous sûr de vouloir vous deconnecter ?')) this.logout() }} className="nav-link text-dark font-italic"><i class="fas fa-sign-out-alt"></i> Se deconnecter</a>
+                        <Link className="nav-link text-dark font-italic" to="/users"><i className="fas fa-user"></i> Utilisateurs</Link>
+                      </li>
+                      <li className="nav-item">
+                        <a href="/#" onClick={() => { if (window.confirm('Etes-vous sûr de vouloir vous deconnecter ?')) this.logout() }} className="nav-link text-dark font-italic"><i class="fas fa-sign-out-alt"></i> Se deconnecter</a>
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div className="col-9 offset-1">
                   <Route exact path="/messages" component={Message} />
+                  <Route exact path="/users" component={User} />
                 </div>
               </div>
             </BrowserRouter>
